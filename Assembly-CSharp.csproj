@@ -53,7 +53,9 @@
   </PropertyGroup>
   <ItemGroup>
      <Compile Include="Assets\Scripts\Data\AchievementData.cs" />
+     <Compile Include="Assets\Scripts\UI\SlicedProgressBar.cs" />
      <Compile Include="Assets\Scripts\Modules\Profile\View\ProfileView.cs" />
+     <Compile Include="Assets\Scripts\Modules\Profile\View\PlayerInfoPanel.cs" />
      <Compile Include="Assets\Scripts\Modules\Profile\Controller\ProfileController.cs" />
      <Compile Include="Assets\Scripts\Modules\Profile\Model\ProfileModel.cs" />
      <Compile Include="Assets\Scripts\Data\AccountData.cs" />
@@ -61,8 +63,6 @@
      <Compile Include="Assets\Scripts\Data\Matching\MatchParameter.cs" />
      <Compile Include="Assets\Scripts\Data\Matching\MatchData.cs" />
      <Compile Include="Assets\Scripts\Modules\Profile\ProfileModule.cs" />
-     <Compile Include="Assets\Scripts\UI\SlicedProgressBar.cs" />
-     <Compile Include="Assets\Scripts\UI\PlayerInfoPanel.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />
@@ -687,6 +687,9 @@
  <Reference Include="Unity.TextMeshPro">
  <HintPath>E:/unity_projects/Test-Project/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
  </Reference>
+ <Reference Include="Unity.2D.Sprite.Editor">
+ <HintPath>E:/unity_projects/Test-Project/Library/ScriptAssemblies/Unity.2D.Sprite.Editor.dll</HintPath>
+ </Reference>
  <Reference Include="UnityEditor.UI">
  <HintPath>E:/unity_projects/Test-Project/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
  </Reference>
@@ -698,9 +701,6 @@
  </Reference>
  <Reference Include="UnityEngine.UI">
  <HintPath>E:/unity_projects/Test-Project/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
- </Reference>
- <Reference Include="Unity.2D.Sprite.Editor">
- <HintPath>E:/unity_projects/Test-Project/Library/ScriptAssemblies/Unity.2D.Sprite.Editor.dll</HintPath>
  </Reference>
   </ItemGroup>
   <ItemGroup>

@@ -4,22 +4,17 @@ namespace UI
 {
     public class SlicedProgressBar : MonoBehaviour
     {
-        [SerializeField] private RectTransform filler;
-        [SerializeField] private float inset = 3;
-
-        private float _parentWidth;
+        [SerializeField] private RectTransform m_filler;
+        [SerializeField] private float m_inset = 3;
 
 
-        private void Start()
-        {
-            if (transform.parent is RectTransform parent)
-                _parentWidth = parent.sizeDelta.x;
-        }
-        
         public void Fill(float percent)
         {
-            var distance = _parentWidth * percent - inset * 2;
-            filler.SetInsetAndSizeFromParentEdge(RectTransform.Edge.Left, inset, distance);
+            if (transform is RectTransform rectTransform)
+            {
+                var distance = rectTransform.rect.width * percent - m_inset * 2;
+                m_filler.SetInsetAndSizeFromParentEdge(RectTransform.Edge.Left, m_inset, distance);
+            }
         }
     }
 }
