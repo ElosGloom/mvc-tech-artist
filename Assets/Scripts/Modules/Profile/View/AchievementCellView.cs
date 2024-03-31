@@ -12,18 +12,18 @@ namespace Modules.Profile.View
         public Sprite Icon;
     }
 
-    public class AchievementCellView : MonoBehaviour, IPoolable<AchievementCellProtocol, IMemoryPool>
+    public class AchievementCellView : MonoBehaviour, IPoolable<AchievementCellProtocol, IMemoryPool>, IClearable
     {
         [SerializeField] private TextMeshProUGUI m_name;
         [SerializeField] private TextMeshProUGUI m_date;
         [SerializeField] private Image m_icon;
 
-        private IMemoryPool _pool;
+        private IMemoryPool m_pool;
 
 
         public void OnSpawned(AchievementCellProtocol protocol, IMemoryPool pool)
         {
-            _pool = pool;
+            m_pool = pool;
             m_name.text = protocol.AchievementName;
             m_date.text = protocol.Date;
             m_icon.sprite = protocol.Icon;
@@ -31,7 +31,7 @@ namespace Modules.Profile.View
 
         public void OnDespawned()
         {
-            _pool = null;
+            m_pool = null;
         }
 
         public class Factory : PlaceholderFactory<AchievementCellProtocol, AchievementCellView>
@@ -42,5 +42,9 @@ namespace Modules.Profile.View
         {
         }
 
+        public void Clear()
+        {
+            m_pool.Despawn(this);
+        }
     }
 }

@@ -69,9 +69,10 @@
      <Compile Include="Assets\Scripts\Data\Matching\MatchData.cs" />
      <Compile Include="Assets\Scripts\Modules\Profile\View\MatchButtonView.cs" />
      <Compile Include="Assets\Scripts\Modules\Profile\ProfileModule.cs" />
-     <Compile Include="Assets\Scripts\UI\AchievementsGroupView.cs" />
+     <Compile Include="Assets\Scripts\Modules\Profile\View\AchievementsGroupView.cs" />
      <Compile Include="Assets\Scripts\ClearableContainer.cs" />
-     <Compile Include="Assets\Scripts\UI\AchievementWindow.cs" />
+     <Compile Include="Assets\Scripts\Modules\Profile\View\ProfileWindowButtonView.cs" />
+     <Compile Include="Assets\Scripts\Modules\Profile\View\ProfileWindowsPanelView.cs" />
      <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
      <None Include="Assets\TextMesh Pro\Shaders\TMP_Bitmap.shader" />

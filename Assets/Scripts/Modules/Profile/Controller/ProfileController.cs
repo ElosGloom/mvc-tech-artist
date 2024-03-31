@@ -1,10 +1,8 @@
 using System;
-using System.Collections.Generic;
 using Data;
 using Data.Matching;
 using Modules.Profile.Model;
 using Modules.Profile.View;
-using UI;
 using UnityEngine;
 using Zenject;
 
@@ -14,12 +12,14 @@ namespace Modules.Profile.Controller
     {
         private readonly ProfileModel m_model;
         private readonly ProfileView m_view;
+        
         private readonly AchievementsGroupView.Factory m_achievementGroupFactory;
         private readonly AchievementCellView.Factory m_achievementCellFactory;
         private readonly MatchButtonView.Factory m_matchButtonFactory;
         private readonly MatchParameterCellView.Factory m_matchParameterCellFactory;
 
         private readonly ClearableContainer m_activeMatchParameters = new ClearableContainer();
+
 
         public ProfileController(
             ProfileModel model,
@@ -43,10 +43,23 @@ namespace Modules.Profile.Controller
             InitPlayerPanel(accountData);
             InitAchievementPanel(accountData);
             InitMatchStatsPanel(accountData);
+            InitProfileWindowsPanel();
         }
 
         public void Dispose()
         {
+            Resources.UnloadUnusedAssets();
+        }
+
+        private void InitProfileWindowsPanel()
+        {
+            m_view.AchievementButtonClickedEvent.AddListener(() =>
+                m_view.ActivateInternalWindow(ProfileWindowsPanelView.WindowType.Achievements));
+
+            m_view.OverviewButtonClickedEvent.AddListener(() =>
+                m_view.ActivateInternalWindow(ProfileWindowsPanelView.WindowType.Overview));
+
+            m_view.ActivateInternalWindow(ProfileWindowsPanelView.WindowType.Achievements);
         }
 
         private void InitAchievementPanel(AccountData accountData)
@@ -98,7 +111,7 @@ namespace Modules.Profile.Controller
                 m_view.AddMatchButtonCell(matchButton);
                 matchButton.ButtonClickEvent.AddListener(() => SetMatchParameters(match.Parameters));
             }
-            
+
             SetMatchParameters(accountData.Matches[0].Parameters);
         }
 
