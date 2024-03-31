@@ -3,7 +3,7 @@ using UI;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PlayerInfoPanel : MonoBehaviour
+public class PlayerInfoPanelView : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI m_playerName;
     [SerializeField] private Image m_playerIcon;
