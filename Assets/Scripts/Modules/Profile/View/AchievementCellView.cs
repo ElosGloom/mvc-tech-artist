@@ -26,6 +26,10 @@ namespace Modules.Profile.View
             m_pool = pool;
             m_name.text = protocol.AchievementName;
             m_date.text = protocol.Date;
+            
+            if (protocol.Icon == null)
+                return;
+            
             m_icon.sprite = protocol.Icon;
         }
 

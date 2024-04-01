@@ -12,7 +12,7 @@ namespace Modules.Profile.Controller
     {
         private readonly ProfileModel m_model;
         private readonly ProfileView m_view;
-        
+
         private readonly AchievementsGroupView.Factory m_achievementGroupFactory;
         private readonly AchievementCellView.Factory m_achievementCellFactory;
         private readonly MatchButtonView.Factory m_matchButtonFactory;
@@ -43,7 +43,7 @@ namespace Modules.Profile.Controller
             InitPlayerPanel(accountData);
             InitAchievementPanel(accountData);
             InitMatchStatsPanel(accountData);
-            InitProfileWindowsPanel();
+            InitProfileWindowsPanel(accountData);
         }
 
         public void Dispose()
@@ -51,13 +51,16 @@ namespace Modules.Profile.Controller
             Resources.UnloadUnusedAssets();
         }
 
-        private void InitProfileWindowsPanel()
+        private void InitProfileWindowsPanel(AccountData accountData)
         {
             m_view.AchievementButtonClickedEvent.AddListener(() =>
                 m_view.ActivateInternalWindow(ProfileWindowsPanelView.WindowType.Achievements));
 
             m_view.OverviewButtonClickedEvent.AddListener(() =>
-                m_view.ActivateInternalWindow(ProfileWindowsPanelView.WindowType.Overview));
+            {
+                m_view.ActivateInternalWindow(ProfileWindowsPanelView.WindowType.Overview);
+                SetMatchParameters(accountData.Matches[0].Parameters);
+            });
 
             m_view.ActivateInternalWindow(ProfileWindowsPanelView.WindowType.Achievements);
         }
@@ -87,14 +90,14 @@ namespace Modules.Profile.Controller
 
                 m_view.AddAchievementGroup(groupView);
             }
+
+            SetMatchParameters(accountData.Matches[0].Parameters);
         }
 
         private void InitMatchStatsPanel(AccountData accountData)
         {
             if (accountData.Matches.Length == 0)
-            {
                 return;
-            }
 
             const int maxMatchButtonCount = 3;
             var lastMatches = accountData.Matches.GetLastElements(maxMatchButtonCount);
@@ -111,8 +114,6 @@ namespace Modules.Profile.Controller
                 m_view.AddMatchButtonCell(matchButton);
                 matchButton.ButtonClickEvent.AddListener(() => SetMatchParameters(match.Parameters));
             }
-
-            SetMatchParameters(accountData.Matches[0].Parameters);
         }
 
 

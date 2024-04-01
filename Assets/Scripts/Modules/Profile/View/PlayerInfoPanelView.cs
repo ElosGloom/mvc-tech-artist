@@ -21,6 +21,9 @@ namespace Modules.Profile.View
 
         public void SetIcon(Sprite icon)
         {
+            if (icon == null)
+                return;
+            
             m_playerIcon.sprite = icon;
         }
 

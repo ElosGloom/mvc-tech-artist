@@ -25,6 +25,10 @@ namespace Modules.Profile.View
         {
             m_pool = pool;
             m_matchType.text = protocol.MatchType;
+
+            if (protocol.Icon == null)
+                return;
+
             m_icon.sprite = protocol.Icon;
         }
 
@@ -37,7 +41,7 @@ namespace Modules.Profile.View
         {
             m_pool.Despawn(this);
         }
-    
+
         public class Factory : PlaceholderFactory<MatchButtonProtocol, MatchButtonView>
         {
         }

@@ -34,17 +34,17 @@ namespace Modules.Profile.View
 
         public void AddAchievementGroup(AchievementsGroupView achievementsGroup)
         {
-            achievementsGroup.transform.SetParent(m_achievementsParent);
+            achievementsGroup.transform.SetParent(m_achievementsParent, false);
         }
 
         public void AddMatchButtonCell(MatchButtonView matchButton)
         {
-            matchButton.transform.SetParent(m_matchButtonParent);
+            matchButton.transform.SetParent(m_matchButtonParent, false);
         }
 
         public void AddMatchParameters(MatchParameterCellView matchParameterCell)
         {
-            matchParameterCell.transform.SetParent(m_matchContentParent);
+            matchParameterCell.transform.SetParent(m_matchContentParent, false);
         }
     }
 }

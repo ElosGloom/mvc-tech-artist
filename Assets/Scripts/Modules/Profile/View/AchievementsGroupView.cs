@@ -19,7 +19,7 @@ namespace Modules.Profile.View
 
         public void AddCell(AchievementCellView achievementCell)
         {
-            achievementCell.transform.SetParent(transform);
+            achievementCell.transform.SetParent(transform, false);
         }
 
         public void Clear()
